@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>響應式網頁設計範例</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .headline {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .desktop-menu {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .desktop-menu div {
+      display: inline-block;
+      margin: 5px 10px;
+      color: #555;
+    }
+
+    .mobile-menu {
+      display: none;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .mobile-menu .menu-toggle {
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .mobile-menu .menu-items {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .mobile-menu .menu-items div {
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .items-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .item {
+      background-color: pink;
+      padding: 10px;
+      width: 22%;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    img {
+      width: 100px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    .iframe-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .footer-video {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .footer-video h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    /* RWD 設定 */
+    @media only screen and (max-width: 500px) {
+      .headline {
+        font-size: 20px;
+      }
+
+      .desktop-menu {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .items-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .item {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="headline">這是一個回應式網頁設計文字過長的範例</div>
+
+  <!-- 桌機版選單 -->
+  <nav class="desktop-menu">
+    <div>選項一</div>
+    <div>選項二</div>
+    <div>選項三</div>
+    <div>選項四</div>
+    <div>選項五</div>
+    <div>選項六</div>
+  </nav>
+
+  <!-- 手機版選單（含 toggle 功能） -->
+  <nav class="mobile-menu">
+    <div class="menu-toggle" onclick="toggleMenu()">☰ </div>
+    <div class="menu-items" id="mobileMenuItems">
+      <div>選項一</div>
+      <div>選項二</div>
+      <div>選項三</div>
+      <div>選項四</div>
+      <div>選項五</div>
+      <div>選項六</div>
+    </div>
+  </nav>
+
+  <!-- 商品項目 -->
+  <div class="items-container">
+    <div class="item">
+      3號
+      <img src="1.jpg" alt="圖片1" />
+    </div>
+    <div class="item">
+      46號
+      <img src="2.jpg" alt="圖片2" />
+    </div>
+    <div class="item">
+      9號
+      <img src="3.jpg" alt="圖片3" />
+    </div>
+  </div>
+
+  <!-- 嵌入影片置中 -->
+  <div class="iframe-container">
+    <iframe width="700px" height="350px" src="https://www.youtube.com/embed/ChPerPg8ZEg" 
+      title="「名偵探柯南 獨眼的殘像」6月25日 全台聯映!" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menuItems = document.getElementById('mobileMenuItems');
+      if (menuItems.style.display === 'block') {
+        menuItems.style.display = 'none';
+      } else {
+        menuItems.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
